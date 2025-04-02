@@ -17,18 +17,30 @@ G.add_edges_from(edges)
 edges = G.edges()
 # print(edges)
 
-# muted rainbow
-srcnodecolors = ["slateblue", "royalblue", "darkcyan", "seagreen", "goldenrod", "chocolate", "indianred"]
+mutedrainbow = ["slateblue", "royalblue", "darkcyan", "seagreen", "goldenrod", "chocolate", "indianred"]
+mutedrainbowR = ["indianred", "chocolate", "goldenrod", "seagreen", "darkcyan", "royalblue", "slateblue"]
+brightrainbow = ["darkviolet", "blue", "teal", "green", "gold", "orange", "red"]
+brightrainbowR = ["red", "orange", "gold", "green", "teal", "blue", "darkviolet"]
 
-# muted rainbow reversed
-#srcnodecolors = ["indianred", "chocolate", "goldenrod", "seagreen", "darkcyan", "royalblue", "slateblue"]
+answer = input("choose a color scheme: 1, 2, 3, or 4")
 
-# bright rainbow
-#srcnodecolors = ["darkviolet", "blue", "teal", "green", "gold", "orange", "red"]
-
-# bright rainbow reversed
-#srcnodecolors = ["red", "orange", "gold", "green", "teal", "blue", "darkviolet"]
-
+try:
+    answer = int(answer)
+    if answer == 1:
+        srcnodecolors = mutedrainbow.copy()
+    elif answer == 2:
+        srcnodecolors = mutedrainbowR.copy()
+    elif answer == 3:
+        srcnodecolors = brightrainbow.copy()
+    elif answer == 4:
+        srcnodecolors = brightrainbowR.copy()
+    else:
+        print("invalid, going with 1")
+        srcnodecolors = mutedrainbow.copy()
+except ValueError:
+    print("invalid, going with 1")
+    srcnodecolors = mutedrainbow.copy()
+    
 ncolorsdict = {}
 srci = 0
 ncolors = []
@@ -57,5 +69,5 @@ options = {
 
 plt.figure(1, figsize=(8,8))
 nx.draw(G, pos=nx.spring_layout(G, k=1), **options)
-#nx.draw_shell(G, **options)
+# nx.draw_shell(G, **options)
 plt.show()
