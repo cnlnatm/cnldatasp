@@ -69,5 +69,5 @@ options = {
 
 plt.figure(1, figsize=(8,8))
 nx.draw(G, pos=nx.spring_layout(G, k=1), **options)
-# nx.draw_shell(G, **options)
+#nx.draw_shell(G, **options)
 plt.show()
